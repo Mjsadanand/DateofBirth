@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day of the Week Finder</title>
+    <style>
+       body {
+            font-family: Arial, sans-serif;
+            background-image: url('https://images.pexels.com/photos/1563356/pexels-photo-1563356.jpeg');
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+            text-align: center;
+            animation: changeimage 40s linear infinite alternate;
+        }
+        @keyframes changeimage {0%{
+            background-image: url('https://images.pexels.com/photos/1563356/pexels-photo-1563356.jpeg');
+        }
+        25%{
+            background-image: url('https://img.freepik.com/free-photo/beautiful-view-greenery-bridge-forest-perfect-background_181624-17827.jpg');
+        }
+        50%{
+            background-image: url('https://i.pinimg.com/originals/a4/96/c2/a496c2b6bc5d7cfe0e0674f6598c38ad.jpg');
+        }
+            75%{
+                background-image: url('https://img.freepik.com/free-photo/painting-mountain-lake-with-mountain-background_188544-9126.jpg?size=626&ext=jpg&ga=GA1.1.1413502914.1696723200&semt=ais');
+            }
+            100%{
+                background-image: url('https://getwallpapers.com/wallpaper/full/4/e/c/794184-beautiful-nature-background-1920x1280-images.jpg');
+            }
+        }
+
+        #container {
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px auto;
+            width: 80%;
+            max-width: 400px;
+            box-shadow: 3px 3px 8px 0px blue;
+        }
+
+        h1 {
+            color: white;font-family: cooper;
+        }
+
+        input[type="date"] {
+            padding: 10px;
+            margin: 10px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            box-shadow: 3px 4px 8px 0px black;
+        }
+        button:hover{
+            box-shadow: 6px 6px 8px 0px black;
+            font-weight: bolder;
+        }
+
+        #result {
+            font-size: 18px;
+            margin-top: 10px;
+            color: white;
+            font-family: cooper;
+        }
+        .contain{
+              box-shadow: 0px 0px 4px black;
+              color:white;
+              display: flex;
+              overflow: hidden;
+              max-width: 1180px;
+              align-items: center;
+              font-family:Gabriola; font-size: 20px;
+             /* background-image: url('https://media.istockphoto.com/id/1411880142/photo/summer-daisies.webp?b=1&s=170667a&w=0&k=20&c=GP9GcXKbh2-P7FzthJAHCv66eqcjN6f_jpF-rJRLNiQ=');*/
+        }
+    </style>
+</head>
+<body>
+    <div class="contain"> <img src="https://www.freeiconspng.com/uploads/blank-logo-design-for-brand-13.png" alt="logo" width="120px" height="80px">
+        <h2>Are you want to know your Day of the Birth Week?</h2>
+    </div>
+    <div id="container">
+        <h1>Day of the Week Finder</h1>
+        <input type="date" id="dob">
+        <br>
+        <button onclick="findDayOfWeek()">Find Day</button>
+        <div id="result"></div>
+    </div>
+
+    <script>
+        function findDayOfWeek() {
+            const dobInput = document.getElementById("dob");
+            const resultElement = document.getElementById("result");
+            
+            // Get the selected date
+            const selectedDate = new Date(dobInput.value);
+            
+            if (!isNaN(selectedDate.getTime())) {
+                // Get the day of the week (0 = Sunday, 1 = Monday, ...)
+                const daysOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+                const dayOfWeek = daysOfWeek[selectedDate.getDay()];
+
+                resultElement.textContent = `You were born on a ${dayOfWeek}.`;
+            } else {
+                resultElement.textContent = "Please select a valid date.";
+            }
+        }
+    </script>
+</body>
+</html>
